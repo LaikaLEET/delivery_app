@@ -1,0 +1,26 @@
+version: '3'
+services:
+  django:
+    build: .
+    container_name: delivery_app
+    command: /bin/bash /opt/delivery_app/entrypoint.sh
+    volumes:
+      - .:/opt/delivery_app
+    ports:
+      - "8000:8000"
+    depends_on:
+      - pgdb
+
+  pgdb:
+    container_name: pgdb
+    image: postgres
+    environment:
+      POSTGRES_DB: "prod_delivery"
+      POSTGRES_USER: "postgres"
+      POSTGRES_PASSWORD: "postgres"
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdbdata:/var/lib/postgresql/data/
+volumes:
+  media:

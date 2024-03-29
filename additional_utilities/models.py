@@ -5,7 +5,7 @@ from .enums import LogTypes
 
 
 class ChangeLocationLog(CreatedUpdatedMixin):
-    track_id = models.ForeignKey('delivery_api.Track', null=True, on_delete=models.CASCADE, blank=True)
+    track_id = models.ForeignKey('delivery_api.Truck', null=True, on_delete=models.CASCADE, blank=True)
     location_id = models.ForeignKey('delivery_api.Location', null=True, on_delete=models.CASCADE, blank=True)
     type = models.PositiveSmallIntegerField(choices=LogTypes.choices())
 

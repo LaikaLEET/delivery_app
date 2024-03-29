@@ -18,7 +18,7 @@ class Location(CreatedUpdatedMixin):
         return f'{self.postcode}, {self.state_name}, {self.city}'
 
 
-class Track(CreatedUpdatedMixin):
+class Truck(CreatedUpdatedMixin):
     tail_number = models.CharField(max_length=5, blank=True, null=True)
     current_location = models.ForeignKey(Location, null=True, related_name="tracks", on_delete=models.CASCADE,
                                          blank=True)
@@ -33,4 +33,4 @@ class Cargo(CreatedUpdatedMixin):
                                  blank=True)
     weigh = models.IntegerField(blank=True, null=True)
     description = models.CharField(max_length=255, blank=True, null=True)
-    track = models.ForeignKey(Track, null=True, related_name="track", on_delete=models.CASCADE, blank=True)
+    track = models.ForeignKey(Truck, null=True, related_name="track", on_delete=models.CASCADE, blank=True)
